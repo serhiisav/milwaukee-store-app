@@ -34,10 +34,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to='products' />} />
-          <Route path='products' element={<CardsList />} />
-          <Route path='favorites' element={<Favorites />} />
-          <Route path='cart' element={<Cart />}>
+          <Route index element={<Navigate to='/products' />} />
+          <Route path='/products' element={<CardsList />} />
+          <Route path='/favorites' element={<Favorites />} />
+          <Route path='/cart' element={<Cart />}>
           </Route>
           <Route path='/cart/order' element={<OrderInfo />} />
         </Route>
