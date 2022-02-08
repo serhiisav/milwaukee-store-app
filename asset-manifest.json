@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/milwaukee-store-app/static/css/main.b7b82434.css",
-    "main.js": "/milwaukee-store-app/static/js/main.b35f734d.js",
+    "main.css": "/milwaukee-store-app/static/css/main.e43aeed8.css",
+    "main.js": "/milwaukee-store-app/static/js/main.e88f74a8.js",
     "index.html": "/milwaukee-store-app/index.html",
-    "main.b7b82434.css.map": "/milwaukee-store-app/static/css/main.b7b82434.css.map",
-    "main.b35f734d.js.map": "/milwaukee-store-app/static/js/main.b35f734d.js.map"
+    "main.e43aeed8.css.map": "/milwaukee-store-app/static/css/main.e43aeed8.css.map",
+    "main.e88f74a8.js.map": "/milwaukee-store-app/static/js/main.e88f74a8.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7b82434.css",
-    "static/js/main.b35f734d.js"
+    "static/css/main.e43aeed8.css",
+    "static/js/main.e88f74a8.js"
   ]
 }
