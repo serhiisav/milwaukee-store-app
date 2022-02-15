@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useEffect } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import CardsList from './pages/Products/CardsList';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Favorites from './pages/Favorites/Favorites';
@@ -10,6 +10,22 @@ import { addAllItems } from './store/thunk';
 import OrderInfo from './pages/OrderInfo/OrderInfo';
 import Layout from './components/Layout/Layout';
 
+
+export const ViewContext = createContext();
+
+const UserProvider = ({ children }) => {
+  const [view, setView] = useState('module');
+  const handleChangeView = (event, nextView) => {
+    if (nextView !== null) {
+      setView(nextView);
+    }
+  };
+  return (
+    <ViewContext.Provider value={{ view, handleChangeView }}>
+      {children}
+    </ViewContext.Provider>
+  )
+}
 
 function App() {
   const dispatch = useDispatch();
@@ -32,16 +48,18 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to='/products' />} />
-          <Route path='/products' element={<CardsList />} />
-          <Route path='/favorites' element={<Favorites />} />
-          <Route path='/cart' element={<Cart />}>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Navigate to='/products' />} />
+            <Route path='/products' element={<CardsList />} />
+            <Route path='/favorites' element={<Favorites />} />
+            <Route path='/cart' element={<Cart />}>
+            </Route>
+            <Route path='/cart/order' element={<OrderInfo />} />
           </Route>
-          <Route path='/cart/order' element={<OrderInfo />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </UserProvider>
     </>
   );
 }

@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
-import Card from "../../components/Card/Card";
+import React, { useContext, useEffect } from "react";
+import CardViewModule from "../../components/Card/CardViewModule";
 import './cardList.scss';
 import Modal from "../../components/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { addAllItems } from "../../store/thunk";
+import ToggleBtn from "../../components/ToggleButton/ToggleButton";
+import { ViewContext } from './../../App';
+import CardViewList from './../../components/Card/CardViewList';
 
 function CardsList() {
     const dispatch = useDispatch();
+
+    const { view } = useContext(ViewContext)
 
     const products = useSelector(state => state.products);
     const isOpenedModal = useSelector(state => state.isOpenedModal);
@@ -17,6 +22,14 @@ function CardsList() {
         dispatch(addAllItems());
     }, [dispatch]);
 
+    const getComponent = (card) => {
+        if (view === 'module') {
+            return (<CardViewModule item={card} />)
+        } else if (view === 'list') {
+            return (<CardViewList item={card} />)
+        }
+    }
+
     return (
         <section className="section-cards">
             {isLoading ? <div className="lds-dual-ring"></div> :
@@ -25,12 +38,15 @@ function CardsList() {
                         {isOpenedModal && <Modal />}
                         <div className="container">
                             <div className="section-cards-wrap">
-                                <ul className="cards-list">
+                                <div className="toggle-btn-wrapp">
+                                    <ToggleBtn />
+                                </div>
+                                <ul className={`cards-list--view-${view}`}>
                                     {products.map(card =>
-                                    (<li key={card.id} id={card.id} className="card-item">
-                                        <Card item={card} />
-                                    </li>))
-                                    }
+                                    (<li key={card.id} id={card.id} className={`card-item--view-${view}`}>
+                                        {getComponent(card)}
+                                    </li>))}
+
                                 </ul>
                             </div>
                         </div>
