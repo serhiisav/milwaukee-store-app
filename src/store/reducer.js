@@ -1,4 +1,24 @@
-import { initialState } from "./store"
+const initialState = {
+    products: [],
+    favoritesList: [],
+    cartList: [],
+    isOpenedModal: false,
+    isLoading: false,
+    error: null,
+    itemsFavoriteList: [],
+    itemsCartList: [],
+    isActiveOrderForm: false,
+    orderInfo: {},
+    totalsOrder: null,
+    dataModal: {
+        header: 'Modal',
+        closeButton: true,
+        text: 'Are you sure you want to delete it',
+        btnActionOk: 'OK',
+        backgroundColor: '#b46c7b',
+        btnActionCancel: 'CANCEL',
+    }
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
