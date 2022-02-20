@@ -1,6 +1,6 @@
 # React App - Milwaukee Store
 
-The [Milwaukee Store](https://serhiisav.github.io/milwaukee-store-app/) website is a simple, quick, and responsive website built with the best principles of React.js, JavaScript technologies and Responsive Web Design.
+The <a href="https://serhiisav.github.io/milwaukee-store-app" target="_blank">Milwaukee Store</a> website is a simple, quick, and responsive website built with the best principles of React.js, JavaScript technologies and Responsive Web Design.
 
 ## Tech
 
